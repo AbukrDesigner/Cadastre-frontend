@@ -1,0 +1,45 @@
+
+<div class="col-lg-6">
+    <div class="px-4 py-3 bg-white rounded-2 form-container">
+      <div class="py-2">
+        <div class="d-flex flex-column align-items-center justify-content-center gap-1">
+          <img src="assets/images/drapeau.svg" alt="drapeau du senegal">
+          <div class="d-flex flex-column align-items-center">
+            <h6 class="republic">Republique du senegal</h6>
+            <p class="devise text-muted lh-1">Un peuple - Un But - Une Foi</p>
+          </div>
+        </div>
+        <div class="py-3">
+          <div class="d-flex flex-column align-items-center justify-content-center">
+            <h5 class="title">Réinitialisation</h5>
+            <div class="subtitle text-muted">Nous vous enverrons un code de réinitialisation à l’adresse email ou au numéro de téléphone associé à votre compte.</div>
+          </div>
+        </div>
+      </div>
+      <div class="mb-2">
+        <label for="password" class="form-label label">Nouveau mot de passe</label>
+        <div class="password-field position-relative">
+          <input id="password" type="password" class="form-control pe-5" placeholder="mot de passe">
+          <button type="button" class="password-toggle" (click)="togglePassword('password', 'eyeIconPassword')" aria-label="Afficher ou masquer le mot de passe">
+            <i id="eyeIconPassword" class="bi bi-eye-slash fs-5"></i>
+          </button>
+        </div>
+      </div>
+      <div class="mb-2">
+        <label for="passwordConfirm" class="form-label label">Confirmer le mot de passe</label>
+        <div class="password-field position-relative">
+          <input id="passwordConfirm" type="password" class="form-control pe-5" placeholder="confirmer le mot de passe">
+          <button type="button" class="password-toggle" (click)="togglePassword('passwordConfirm', 'eyeIconConfirm')" aria-label="Afficher ou masquer le mot de passe">
+            <i id="eyeIconConfirm" class="bi bi-eye-slash fs-5"></i>
+          </button>
+        </div>
+      </div>
+      <div class="py-2">
+        <button class=" btn cta login" [routerLink]="'/auth/login'">Confirmer</button>
+      </div>
+      <div class="py-3 text-center">
+        <a href="javascript:(0)" class="lien" [routerLink]="'/frontoffice'">Retour à l’acceuil</a>
+      </div>
+    </div>
+  </div>
+  

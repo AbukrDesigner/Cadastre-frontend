@@ -1,0 +1,82 @@
+.form-container{
+    width: 80vh;
+    position: relative;
+  }
+  .republic{
+    color: var(--text-color);
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .devise{
+    font-size: 12px;
+    font-style: italic;
+  }
+  .title{
+    color: var(--text-color);
+    font-weight: 700;
+  }
+  .subtitle{
+    font-size: 14px;
+  }
+  .forget{
+    font-size: 12px;
+    color: var(--primary-color);
+    text-decoration: none;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+  .form-control, .form-select{
+    height: 50px;
+    width: 100%;
+  }
+  .label{
+    color: var(--text-color);
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .cta{
+    padding: 15px 20px;
+    border-radius: 10px;
+    width: 100%;
+  }
+  .cta.login{
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .lien{
+    color: var(--primary-color);
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: 400;
+    &:hover{
+        text-decoration: underline;
+    }
+  }
+  .password-toggle{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 12px;
+    transform: none;
+    padding: 0;
+    border: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9fa6b2;
+    &:hover,
+    &:focus{
+      color: var(--primary-color);
+      outline: none;
+      box-shadow: none;
+    }
+    i{
+      font-size: 1.25rem;
+      line-height: 1;
+    }
+  }

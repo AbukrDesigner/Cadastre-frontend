@@ -1,0 +1,116 @@
+.hero-section{
+    background-image: url(.../../../../../../assets/images/hero.svg) ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: calc(100vh - 400px);
+    top: 0;
+    position: relative;
+}
+.hero-section::after{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(55,65,81,0.75);
+}
+.hero-section .container{
+    position: relative;
+    z-index: 1;
+}
+.hero-title{
+    position: relative;
+    top: 100px;
+}
+.formulaire{
+    position: relative;
+    top: -50px;
+}
+.form-select,.form-control{
+    height: 50px;
+}
+
+.label{
+    color: var(--text-color);
+    font-weight: 500;
+}
+.back{
+    color: var(--tertiary-color);
+}
+.cta{
+    padding: 10px 20px;
+}
+.cta.cancel {
+    color: var(--primary-color);
+    background-color: rgba(10, 151, 72, 0.12);
+}
+.cta.next{
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.upload-zone {
+    border: 2px dashed #d1d5db;
+    border-radius: 8px;
+    padding: 20px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #ffffff;
+    margin-top: 10px;
+
+    &:hover {
+        border-color: var(--primary-color);
+        background-color: rgba(10, 151, 72, 0.02);
+    }
+
+    &.drag-over {
+        border-color: var(--primary-color);
+        background-color: rgba(10, 151, 72, 0.05);
+    }
+}
+
+.upload-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.upload-icon {
+    font-size: 48px;
+    color: #9ca3af;
+    margin-bottom: 10px;
+}
+
+.upload-text {
+    color: #6b7280;
+    font-size: 16px;
+    margin: 0;
+    font-weight: 500;
+}
+
+.upload-size {
+    color: #9ca3af;
+    font-size: 14px;
+    margin: 0;
+}
+
+.file-item {
+    .file-name {
+        font-size: 14px;
+        color: var(--text-color);
+    }
+
+    .file-size {
+        font-size: 12px;
+    }
+
+    .btn {
+        border: none;
+        background: transparent;
+        padding: 4px 8px;
+        
+        &:hover {
+            background-color: rgba(220, 38, 38, 0.1);
+        }
+    }
+}

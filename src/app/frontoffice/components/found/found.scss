@@ -1,0 +1,64 @@
+.hero-section{
+    background-image: url(.../../../../../../assets/images/hero.svg) ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: calc(100vh - 400px);
+    top: 0;
+    position: relative;
+}
+.hero-section::after{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(55,65,81,0.75);
+}
+.hero-section .container{
+    position: relative;
+    z-index: 1;
+}
+.hero-title{
+    position: relative;
+    top: 100px;
+}
+.section{
+    position: relative;
+    top: -50px;
+}
+.form-select,.form-control{
+    height: 50px;
+}
+.col-left-title{
+    color: var(--text-color);
+    font-weight: 900;
+}
+.label{
+    color: var(--text-color);
+    font-weight: 500;
+}
+.cta{
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-size: 14px
+}
+.cta.search{
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    width: 100%;
+}
+
+.suivi-title{
+    color: var(--text-color);
+    font-weight: 800;
+}
+
+//text reinitialiser
+.right-text{
+    font-size: 14px;
+    color: var(--secondary-color);
+}
+
+//Badge en cours
+.badge{
+    color: var(--tertiary-color);
+    background-color: color-mix(in srgb, var(--tertiary-color) 10%, transparent);
+}

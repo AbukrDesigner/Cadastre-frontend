@@ -1,0 +1,40 @@
+
+<div class="col-lg-6">
+    <div class="px-4 py-4 bg-white rounded-2 form-container">
+      <div class="py-2">
+        <div class="d-flex flex-column align-items-center justify-content-center gap-2">
+          <img src="assets/images/drapeau.svg" alt="Drapeau du Sénégal">
+          <div class="d-flex flex-column align-items-center">
+            <h6 class="republic">Republique du senegal</h6>
+            <p class="devise text-muted lh-1">Un peuple - Un But - Une Foi</p>
+          </div>
+        </div>
+        <div class="py-4 text-center">
+          <h5 class="title mb-2">Vérification OTP</h5>
+          <p class="subtitle text-muted mb-0">
+            Un code de vérification a été envoyé par SMS/Email au
+          </p>
+          <span class="subtitle text-muted fw-semibold">+221 XXXXXXX.</span>
+        </div>
+      </div>
+      <div class="py-3">
+        <div class="otp-inputs">
+          <input class="otp-input is-filled" type="text" inputmode="numeric" maxlength="1" value="1" readonly>
+          <input class="otp-input" type="text" inputmode="numeric" maxlength="1" placeholder="*">
+          <input class="otp-input" type="text" inputmode="numeric" maxlength="1" placeholder="*">
+          <input class="otp-input" type="text" inputmode="numeric" maxlength="1" placeholder="*">
+        </div>
+      </div>
+      <div class="text-center py-1">
+        <span class="subtitle text-muted">Vous n’avez pas reçu le code ?</span>
+        <a class="resend-link" href="javascript:void(0)">Renvoyer</a>
+      </div>
+      <div class="py-3">
+        <button class="btn cta login" [routerLink]="'/auth/reset'">Verifier</button>
+      </div>
+      <div class="py-1 text-center">
+        <a href="javascript:void(0)" class="lien" [routerLink]="'/frontoffice'">Retour à l’acceuil</a>
+      </div>
+    </div>
+  </div>
+

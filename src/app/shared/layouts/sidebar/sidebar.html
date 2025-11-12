@@ -1,0 +1,83 @@
+<!-- navbar content -->
+ <div class="navbar">
+    <div class="container">
+        <div class="navbar-content d-flex align-items-center w-100">
+            <button class="sidebar-toggle-btn" 
+                    (click)="toggleSidebar()"
+                    [class.collapsed]="isSidebarCollapsed"
+                    aria-label="Réduire/Agrandir le sidebar">
+                <i class="bi" [ngClass]="isSidebarCollapsed ? 'bi-chevron-right' : 'bi-chevron-left'"></i>
+            </button>
+            <h6 class="fw-bold fs-5 text-white navbar-title p-3 mb-0 d-flex align-items-center gap-2" [class.sidebar-collapsed]="isSidebarCollapsed">
+                <i class="bi bi-chevron-left navbar-back"
+                   (click)="router.navigate(['/backoffice'])"
+                   [class.d-none]="router.url === '/backoffice'"
+                   aria-label="Retour au tableau de bord"></i>
+                {{ currentTitle }}
+            </h6>
+            <div class="navbar-actions d-flex align-items-center gap-3 ms-auto">
+                <div class="navbar-notification position-relative d-flex align-items-center justify-content-center">
+                    <i class="bi bi-bell-fill"></i>
+                    <span class="notification-badge">2</span>
+                </div>
+                <div class="profile-card-wrapper position-relative">
+                    <div class="profile-card d-flex align-items-center gap-2" (click)="toggleDropdown()">
+                        <span class="avatar d-flex align-items-center justify-content-center">
+                            <i class="bi bi-person-fill"></i>
+                        </span>
+                        <div class="d-flex flex-column text-start">
+                            <p class="profile-name mb-0">Boubacar Balde</p>
+                            <small class="profile-role">UI/UX Designer</small>
+                        </div>
+                        <i class="bi bi-chevron-right" [class.rotated]="isDropdownOpen"></i>
+                    </div>
+                    <div class="dropdown-menu" [class.show]="isDropdownOpen">
+                        <div class="dropdown-item" (click)="goToAccount()">
+                            <i class="bi bi-person"></i>
+                            <span>Mon compte</span>
+                        </div>
+                        <div class="dropdown-item" (click)="logout()">
+                            <i class="bi bi-box-arrow-right"></i>
+                            <span>Se déconnecter</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+<!-- sidebar content -->
+<div class="sidebar" [class.collapsed]="isSidebarCollapsed">
+    <div class="d-flex flex-column text-center gap-5 pt-2">
+        <div class="d-flex flex-column">
+            <img src="assets/images/drapeau.svg" alt="logo du senegal" class="w-25 mx-auto sidebar-flag">
+            
+                <div class="d-flex flex-column sidebar-text-content">
+                    <div class="fw-bold text-color">Republique du senegal</div>
+                    <p class="devise">Un Peuple - Un But - Une Foi</p>
+                </div>
+            
+        </div>
+        <div class="d-flex flex-column gap-3">
+            <div class="sidebar-item" [routerLink]="'/backoffice'" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <i class="bi bi-grid"></i>
+                <p class="sidebar-text fw-bold ">Tableau de bord</p>
+            </div>
+            <div class="sidebar-item" [routerLink]="'/backoffice/demandes'" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <i class="bi bi-ui-checks"></i>
+                <p class="sidebar-text" >Gestion des réclamations</p>
+            </div>
+            <div class="sidebar-item" [routerLink]="'#'"  routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <i class="bi bi-file-earmark-check-fill"></i>
+                <p class="sidebar-text">Vérifications</p>
+            </div>
+            <div class="sidebar-item" [routerLink]="'#'"  routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <i class="bi bi-gear-fill"></i>
+                <p class="sidebar-text">Paramètre</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content" [class.sidebar-collapsed]="isSidebarCollapsed">
+    <router-outlet></router-outlet>
+    </div>

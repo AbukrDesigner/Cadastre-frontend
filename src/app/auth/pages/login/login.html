@@ -1,0 +1,42 @@
+
+<div class=" col-12 col-lg-6">
+  <div class="px-4 py-3 bg-white rounded-2 form-container">
+    <div class="py-2">
+      <div class="d-flex flex-column align-items-center justify-content-center gap-1">
+        <img src="assets/images/drapeau.svg" alt="drapeau du senegal">
+        <div class="d-flex flex-column align-items-center">
+          <h6 class="republic">Republique du senegal</h6>
+          <p class="devise text-muted lh-1">Un peuple - Un But - Une Foi</p>
+        </div>
+      </div>
+      <div class="py-3">
+        <div class="d-flex flex-column align-items-center justify-content-center">
+          <h5 class="title">Connexion</h5>
+          <div class="subtitle text-muted">Accédez à votre espace personnel</div>
+        </div>
+      </div>
+    </div>
+    <div class="mb-2">
+      <label for="username" class="form-label label">Nom d'utilisateur</label>
+      <input type="text" class="form-control" placeholder="nom d'utilisateur">
+    </div>
+    <div class="mb-2">
+      <label for="password" class="form-label label">Mot de passe</label>
+      <div class="password-field position-relative">
+        <input id="password" type="password" class="form-control pe-5" placeholder="mot de passe">
+        <button type="button" class="password-toggle" (click)="togglePassword('password', 'eyeIconPassword')" aria-label="Afficher ou masquer le mot de passe">
+          <i id="eyeIconPassword" class="bi bi-eye-slash fs-5"></i>
+        </button>
+      </div>
+    </div>
+    <div class="py-2 d-flex flex-row align-items-center justify-content-between">
+     
+        <mat-checkbox color="accent">Se souvenir de moi</mat-checkbox>
+        <a href="javascript:(0)" class=" forget" [routerLink]="'/auth/forget'">Mot de passe oublié ?</a>
+   
+    </div>
+    <div class="py-2">
+      <button class=" btn cta login"[routerLink]="'/backoffice'">Se connecter</button>
+    </div>
+  </div>
+</div>

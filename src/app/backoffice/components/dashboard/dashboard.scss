@@ -1,0 +1,126 @@
+
+.dashboard{
+     position: relative;
+     width: 100%;
+     min-height: 100%;
+     margin-top: 16px;
+     overflow-x: hidden;
+}
+
+.stats-row{
+     display: flex;
+     flex-wrap: wrap;
+     gap: 1rem;
+     width: 100%;
+}
+
+.stats-row > .bg-white{
+     flex: 1 1 300px;
+     min-width: 0;
+}
+.encours{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+     
+}
+.encours.indicator{
+    color: var(--primary-color);
+    background-color: rgba(10, 151, 72, 0.1);
+}
+.encours.filecheck{
+    color: var(--tertiary-color);
+    background-color: rgba(37, 99, 184, 0.1);
+}
+.encours.excel{
+    color: var(--secondary-color);
+    background-color: rgba(246, 115, 102, 0.1);
+}
+
+.chart-container{
+    position: relative;
+}
+
+.btn-menu{
+    background: none;
+    border: none;
+    color: #9CA3AF;
+    font-size: 1.2rem;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.btn-menu:hover{
+    color: var(--text-color);
+}
+
+.chart-wrapper{
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#circle{
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.chart-legend{
+    flex-wrap: wrap;
+}
+
+.legend-item{
+    display: flex;
+    align-items: center;
+}
+
+.legend-dot{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* Legend colors */
+.legend-dot.encours{
+    background-color: #D1D5DB; /* gray-300 */
+}
+.legend-dot.validees{
+    background-color: var(--primary-color);
+}
+.legend-dot.rejetees{
+    background-color: var(--secondary-color);
+}
+
+/* Responsive fixes to prevent overflow on smaller screens */
+@media (max-width: 992px) {
+    .dashboard .d-flex.align-items-start.justify-content-between {
+        gap: 1rem; /* reduce large gap that can cause overflow */
+    }
+}
+
+@media (max-width: 576px) {
+    .dashboard .d-flex.align-items-start.justify-content-between {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    .dashboard .nowrap {
+        white-space: normal; /* allow wrapping of long labels on phones */
+    }
+    .chart-wrapper {
+        height: auto;
+        min-height: 240px;
+    }
+}
+
+/* Ensure canvases scale within their containers */
+canvas {
+    max-width: 100%;
+    height: auto !important;
+    display: block;
+}

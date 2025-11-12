@@ -1,0 +1,65 @@
+<div class="fixednavbar">
+    <div class="topbar py-2">
+        <div class="container d-flex flex-wrap align-items-center justify-content-center justify-content-md-between gap-3 gap-md-0">
+            <div class="d-flex flex-wrap align-items-center text-white gap-3 gap-md-5 justify-content-center">
+                <span class="d-flex align-items-center text-center text-md-start">
+                    <i class="bi bi-geo-alt me-2"></i>
+                    123 Avenue Cheikh Anta Diop, Dakar, Sénégal
+                </span>
+                <span class="d-flex align-items-center">
+                    <i class="bi bi-telephone me-2"></i>
+                    +221 33 123 45 67
+                </span>
+            </div>
+            <div class="d-flex align-items-center justify-content-center gap-2">
+                <a href="javascript:(0)" aria-label="Facebook" class="social-icon"><i class="bi bi-facebook"></i></a>
+                <a href="javascript:(0)" aria-label="Twitter" class="social-icon"><i class="bi bi-twitter"></i></a>
+                <a href="javascript:(0)" aria-label="Instagram" class="social-icon"><i class="bi bi-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light mainheader py-3">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-3" [routerLink]="'/'">
+                <div class="d-flex flex-column align-items-center justify-content-center">
+                    <img src="assets/images/drapeau.svg" alt="Drapeau du Sénégal" class="flag-img">
+                    <div class="d-none d-sm-block text-center">
+                        <small class="republic">Republique du Senegal</small>
+                        <div class="lh-1 devise">Un Peuple - Un But - Une Foi</div>
+                    </div>
+                </div>
+                <div class="vr mx-2 d-none d-md-block"></div>
+                <div>
+                    <h2 class="site-title m-0">E-reclamation</h2>
+                    <div class="site-subtitle text-muted">Plateforme de Gestion des réclamations foncières</div>
+                </div>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Basculer la navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-lg-auto align-items-lg-center gap-lg-3">
+                    <li class="nav-item">
+                        <a [routerLink]="'/frontoffice/portail'" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="javascript:(0)" class="nav-link">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="javascript:(0)" class="nav-link">Comment ça marche</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="javascript:(0)" class="nav-link">Contacts</a>
+                    </li>
+                    <li class="nav-item mt-3 mt-lg-0">
+                        <a href="javascript:(0)" class="btn btn-login w-100 w-lg-auto">Se connecter</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+

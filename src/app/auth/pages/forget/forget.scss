@@ -1,0 +1,127 @@
+@use 'sass:color';
+
+.form-container{
+  width: 80vh;
+  position: relative;
+}
+.republic{
+  color: var(--text-color);
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.devise{
+  font-size: 12px;
+  font-style: italic;
+}
+.title{
+  color: var(--text-color);
+  font-weight: 700;
+}
+.subtitle{
+  font-size: 14px;
+}
+.lien{
+  color: var(--primary-color);
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 500;
+  &:hover{
+    text-decoration: underline;
+  }
+}
+.contact-toggle{
+  display: flex;
+  gap: 8px;
+  padding: 6px;
+//   background-color: #e6f4ea;
+  border-radius: 10px;
+
+  &__btn{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 18px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--primary-color);
+    background-color: #ffffff;
+    transition: all 0.2s ease;
+
+    i{
+      font-size: 1.1rem;
+    }
+
+    &.active{
+      background-color: var(--primary-color-transparent, rgba(46, 204, 113, 0.12));
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+  }
+}
+.contact-label{
+  color: #1a202c;
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.contact-input{
+  position: relative;
+
+  .contact-field{
+    height: 56px;
+    padding-right: 64px;
+    border-radius: 10px;
+    border: 1px solid #cbd5e1;
+    box-shadow: none;
+    font-size: 16px;
+    color: #1a202c;
+    background-color: #ffffff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    &::placeholder{
+      color: #94a3b8;
+    }
+
+    &:focus{
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.25);
+    }
+  }
+
+  &__icon{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    width: 30px;
+    height: 30px;
+    margin: auto;
+    background-color: transparent;
+    border-radius: 12px;
+  }
+}
+.cta{
+  padding: 15px 20px;
+  border-radius: 16px;
+  width: 100%;
+  font-weight: 600;
+  font-size: 18px;
+
+  &.submit{
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    // box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  }
+}

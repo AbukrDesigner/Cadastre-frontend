@@ -1,0 +1,67 @@
+
+<div class="col-lg-6">
+    <div class="px-4 py-3 bg-white rounded-2 form-container">
+      <div class="py-2">
+        <div class="d-flex flex-column align-items-center justify-content-center gap-1">
+          <img src="assets/images/drapeau.svg" alt="drapeau du senegal">
+          <div class="d-flex flex-column align-items-center">
+            <h6 class="republic">Republique du senegal</h6>
+            <p class="devise text-muted lh-1">Un peuple - Un But - Une Foi</p>
+          </div>
+        </div>
+        <div class="py-3">
+          <div class="d-flex flex-column align-items-center justify-content-center">
+            <h5 class="title">Mot de passe oublié?</h5>
+            <div class="subtitle text-muted">Nous vous enverrons un code de réinitialisation à l’adresse email ou au numéro de téléphone associé à votre compte.</div>
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="contact-toggle">
+          <button
+            type="button"
+            class="contact-toggle__btn"
+            [ngClass]="{ 'active': contactMethod === 'email' }"
+            (click)="setContactMethod('email')"
+            [attr.aria-pressed]="contactMethod === 'email'"
+          >
+            <i class="bi bi-envelope-fill"></i>
+            Email
+          </button>
+          <button
+            type="button"
+            class="contact-toggle__btn"
+            [ngClass]="{ 'active': contactMethod === 'phone' }"
+            (click)="setContactMethod('phone')"
+            [attr.aria-pressed]="contactMethod === 'phone'"
+          >
+            <i class="bi bi-telephone-fill"></i>
+            Téléphone
+          </button>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label contact-label">{{ contactLabel }}</label>
+        <div class="contact-input position-relative">
+          <input
+            [type]="contactInputType"
+            class="form-control contact-field"
+            [placeholder]="contactPlaceholder"
+            [attr.inputmode]="contactInputMode"
+            [attr.autocomplete]="contactAutocomplete"
+            [attr.aria-label]="contactLabel"
+          >
+          <span class="contact-input__icon">
+            <i class="bi" [ngClass]="contactIcon"></i>
+          </span>
+        </div>
+      </div>
+      <div class="py-3">
+        <button type="button" class="btn cta submit w-100" [routerLink]="'/auth/otp'">Envoyer</button>
+      </div>
+      <div class="text-center">
+        <a href="javascript:(0)" class="lien" [routerLink]="'/frontoffice/'">Retour à l’accueil</a>
+      </div>
+    </div>
+  </div>
+  

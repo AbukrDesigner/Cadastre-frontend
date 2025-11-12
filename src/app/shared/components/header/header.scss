@@ -1,0 +1,90 @@
+// .fixednavbar{
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     z-index: 1050;
+// }
+.topbar{
+    background: linear-gradient(90deg, #0a9748 0%, #0b6a3a 100%);
+    color: #fff;
+}
+
+.social-icon{
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.9);
+    color: #fff;
+    text-decoration: none;
+    transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+
+.social-icon:hover{
+    background-color: rgba(255,255,255,0.15);
+    border-color: #fff;
+    color: #fff;
+}
+
+.mainheader{
+    background-color: #fff;
+    color: #222;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.flag-img{
+    width: 50px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
+.site-title{
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    color: var(--text-color);
+}
+.republic{
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.devise{
+    font-size: 10px;
+    font-style: italic;
+    color: var(--text-color);
+}
+
+.site-subtitle{
+    font-size: 12px;
+}
+
+.nav-link{
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color .2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active{
+    color: #0a9748;
+}
+
+.btn-login{
+    background-color: #0a9748;
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 999px;
+    text-decoration: none;
+}
+
+.btn-login:hover{
+    background-color: #0b8541;
+    color: #fff;
+}
