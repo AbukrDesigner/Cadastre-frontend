@@ -1,22 +1,22 @@
 
-<div class="col-lg-6">
-    <div class="px-4 py-3 bg-white rounded-2 form-container">
-      <div class="py-2">
-        <div class="d-flex flex-column align-items-center justify-content-center gap-1">
-          <img src="assets/images/drapeau.svg" alt="drapeau du senegal">
+<div class="col-12 d-flex align-items-center justify-content-center">
+    <div class="w-100 px-3 px-md-4 px-lg-5 py-3 py-md-4 bg-white rounded-2 form-container">
+      <div class="py-2 py-md-3">
+        <div class="d-flex flex-column align-items-center justify-content-center gap-1 gap-md-2">
+          <img src="assets/images/drapeau.svg" alt="drapeau du senegal" class="img-fluid" style="max-width: 60px; height: auto;">
           <div class="d-flex flex-column align-items-center">
-            <h6 class="republic">Republique du senegal</h6>
-            <p class="devise text-muted lh-1">Un peuple - Un But - Une Foi</p>
+            <h6 class="republic mb-1 mb-md-2">Republique du senegal</h6>
+            <p class="devise text-muted lh-1 mb-0">Un peuple - Un But - Une Foi</p>
           </div>
         </div>
-        <div class="py-3">
+        <div class="py-2 py-md-3 py-lg-4">
           <div class="d-flex flex-column align-items-center justify-content-center">
-            <h5 class="title">Mot de passe oublié?</h5>
-            <div class="subtitle text-muted">Nous vous enverrons un code de réinitialisation à l’adresse email ou au numéro de téléphone associé à votre compte.</div>
+            <h5 class="title mb-2 mb-md-3">Mot de passe oublié?</h5>
+            <div class="subtitle text-muted text-center px-2">Nous vous enverrons un code de réinitialisation à l'adresse email ou au numéro de téléphone associé à votre compte.</div>
           </div>
         </div>
       </div>
-      <div class="mb-3">
+      <div class="mb-3 mb-md-4">
         <div class="contact-toggle">
           <button
             type="button"
@@ -40,7 +40,7 @@
           </button>
         </div>
       </div>
-      <div class="mb-3">
+      <div class="mb-3 mb-md-4">
         <label class="form-label contact-label">{{ contactLabel }}</label>
         <div class="contact-input position-relative">
           <input
@@ -56,11 +56,11 @@
           </span>
         </div>
       </div>
-      <div class="py-3">
+      <div class="py-2 py-md-3">
         <button type="button" class="btn cta submit w-100" [routerLink]="'/auth/otp'">Envoyer</button>
       </div>
-      <div class="text-center">
-        <a href="javascript:(0)" class="lien" [routerLink]="'/frontoffice/'">Retour à l’accueil</a>
+      <div class="py-2 py-md-3 text-center">
+        <a href="javascript:(0)" class="lien" [routerLink]="'/frontoffice/'">Retour à l'accueil</a>
       </div>
     </div>
   </div>

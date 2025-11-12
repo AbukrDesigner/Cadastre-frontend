@@ -1,13 +1,13 @@
 
     <div class="hero-section">
         <div class="container">
-            <h3 class="fw-bold hero-title text-white">{{ currentStepTitle | titlecase }}</h3>
-
+            <h3 class="fw-bold hero-title text-white">Informations de la demande</h3>
+            <app-breadcrumb currentPage="Dépôt de demande"></app-breadcrumb>
         </div>
     </div>
     <div class="container">
         <div class="formulaire p-3 rounded-2 bg-white">
-            <h6 class="py-3 fw-semibold label border-bottom">Informations de la demande</h6>
+            <h6 class="py-3 fw-semibold label border-bottom">{{ currentStepTitle | titlecase }}</h6>
             <mat-stepper  #stepper (selectionChange)="onStepChange($event)">
                 <!-- Premier stepper -->
                 <mat-step label="informations de la demande">

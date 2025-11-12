@@ -3,10 +3,11 @@ import {MatStepperModule} from '@angular/material/stepper';
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
 import { StepperSelectionEvent } from '@angular/cdk/stepper';
+import { BreadcrumbComponent } from '../../../shared/components/breadcrumb/breadcrumb';
 
 @Component({
   selector: 'app-depose',
-  imports: [MatStepperModule, CommonModule],
+  imports: [MatStepperModule, CommonModule, BreadcrumbComponent],
   templateUrl: './depose.html',
   styleUrl: './depose.scss',
 })

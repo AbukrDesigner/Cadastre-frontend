@@ -13,7 +13,7 @@ export const AUTH_ROUTES: Routes = [
         children: [
             
             {
-                path: 'login',
+                path: '',
                 component: Login,
                 data: { title: 'Connexion' }
             },

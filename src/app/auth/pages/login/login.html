@@ -1,26 +1,25 @@
-
-<div class=" col-12 col-lg-6">
-  <div class="px-4 py-3 bg-white rounded-2 form-container">
-    <div class="py-2">
-      <div class="d-flex flex-column align-items-center justify-content-center gap-1">
-        <img src="assets/images/drapeau.svg" alt="drapeau du senegal">
+<div class="col-12 d-flex align-items-center justify-content-center">
+  <div class="w-100 px-3 px-md-4 px-lg-5 py-3 py-md-4 bg-white rounded-2 form-container">
+    <div class="py-2 py-md-3">
+      <div class="d-flex flex-column align-items-center justify-content-center gap-1 gap-md-2">
+        <img src="assets/images/drapeau.svg" alt="drapeau du senegal" class="img-fluid" style="max-width: 60px; height: auto;">
         <div class="d-flex flex-column align-items-center">
-          <h6 class="republic">Republique du senegal</h6>
-          <p class="devise text-muted lh-1">Un peuple - Un But - Une Foi</p>
+          <h6 class="republic mb-1 mb-md-2">Republique du senegal</h6>
+          <p class="devise text-muted lh-1 mb-0">Un peuple - Un But - Une Foi</p>
         </div>
       </div>
-      <div class="py-3">
+      <div class="py-2 py-md-3 py-lg-4">
         <div class="d-flex flex-column align-items-center justify-content-center">
-          <h5 class="title">Connexion</h5>
-          <div class="subtitle text-muted">Accédez à votre espace personnel</div>
+          <h5 class="title mb-2 mb-md-3">Connexion</h5>
+          <div class="subtitle text-muted text-center px-2">Accédez à votre espace personnel</div>
         </div>
       </div>
     </div>
-    <div class="mb-2">
+    <div class="mb-3 mb-md-4">
       <label for="username" class="form-label label">Nom d'utilisateur</label>
-      <input type="text" class="form-control" placeholder="nom d'utilisateur">
+      <input type="text" class="form-control" id="username" placeholder="nom d'utilisateur">
     </div>
-    <div class="mb-2">
+    <div class="mb-3 mb-md-4">
       <label for="password" class="form-label label">Mot de passe</label>
       <div class="password-field position-relative">
         <input id="password" type="password" class="form-control pe-5" placeholder="mot de passe">
@@ -29,14 +28,12 @@
         </button>
       </div>
     </div>
-    <div class="py-2 d-flex flex-row align-items-center justify-content-between">
-     
-        <mat-checkbox color="accent">Se souvenir de moi</mat-checkbox>
-        <a href="javascript:(0)" class=" forget" [routerLink]="'/auth/forget'">Mot de passe oublié ?</a>
-   
+    <div class="py-2 py-md-3 d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-between gap-2 gap-sm-0">
+      <mat-checkbox color="accent" class="mb-0">Se souvenir de moi</mat-checkbox>
+      <a href="javascript:(0)" class="forget text-nowrap" [routerLink]="'/auth/forget'">Mot de passe oublié ?</a>
     </div>
-    <div class="py-2">
-      <button class=" btn cta login"[routerLink]="'/backoffice'">Se connecter</button>
+    <div class="py-2 py-md-3">
+      <button class="btn cta login w-100" [routerLink]="'/backoffice'">Se connecter</button>
     </div>
   </div>
 </div>
