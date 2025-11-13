@@ -23,6 +23,17 @@
 .section{
     position: relative;
     top: -50px;
+    // margin-bottom: 40px;
+}
+
+// Espace pour le footer fixe sur mobile et tablette
+@media (max-width: 991.98px) {
+    .container {
+        padding-bottom: 20px !important; // Espace pour éviter que le contenu passe sous le footer
+    }
+    .section {
+        margin-bottom: 50px; // Espace supplémentaire
+    }
 }
 .form-select,.form-control{
     height: 50px;
@@ -30,6 +41,11 @@
 .col-left-title{
     color: var(--text-color);
     font-weight: 900;
+    font-size: 16px !important; // Plus petit sur mobile
+    
+    @media (min-width: 768px) {
+        font-size: 20px !important; // Plus grand sur md et plus
+    }
 }
 .label{
     color: var(--text-color);

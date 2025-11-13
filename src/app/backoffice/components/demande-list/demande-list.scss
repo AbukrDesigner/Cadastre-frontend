@@ -16,6 +16,38 @@
 /* Styles du tableau */
 .table{
 	width: 100%;
+	min-width: 600px; /* Largeur minimale pour éviter que le tableau soit trop compressé */
+	margin-bottom: 0;
+}
+
+.table-responsive {
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+	-ms-overflow-style: -ms-autohiding-scrollbar;
+	
+	/* Amélioration pour mobile */
+	@media (max-width: 767.98px) {
+		border-radius: 8px;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	}
+}
+
+/* Responsive pour les cellules du tableau */
+@media (max-width: 767.98px) {
+	.table {
+		font-size: 0.875rem;
+		min-width: 500px;
+	}
+	
+	.table th,
+	.table td {
+		padding: 0.5rem 0.75rem;
+		white-space: nowrap;
+	}
+	
+	.table th {
+		font-size: 0.75rem;
+	}
 }
 
 .table-section{
@@ -51,9 +83,23 @@
 	padding: 6px 10px;
 	border-radius: 10px;
 }
-.input-group,input, select{
+.input-group, input, select{
 	height: 50px;
-	width: auto;
 	background-color: #F2F5F9;
+}
+
+.input-group {
+	flex: 1 1 auto;
+	min-width: 200px;
+}
+
+select.form-select {
+	min-width: 200px;
+}
+
+.btn.filter{
+	height: 50px;
+	white-space: nowrap;
+	min-width: 120px;
 }
 

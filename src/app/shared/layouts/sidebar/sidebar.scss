@@ -95,6 +95,12 @@
     color: var(--primary-color);
     background-color: rgba(0, 128, 0, 0.12);
     border-right: 2px solid var(--primary-color);
+    
+    /* Styles pour mobile et tablette uniquement */
+    @media (max-width: 991.98px) {
+        border-radius: none;
+        border-right: 1px solid var(--primary-color);
+    }
 }
 
 // barre de naviagtion
@@ -105,26 +111,48 @@
     width: 100%;
     z-index: 1;
     background-color: var(--primary-color);
-    padding: 0.75rem 2rem;
+    padding: 0.75rem 1rem;
+    
+    @media (min-width: 768px) {
+        padding: 0.75rem 2rem;
+    }
 }
 
-/* Responsive layout: stack sidebar on smaller screens to avoid overflow */
-@media (max-width: 992px) {
+/* Responsive layout: cacher le sidebar sur mobile/tablette */
+@media (max-width: 991.98px) {
     .sidebar{
-        position: static;
-        width: 100%;
-        height: auto;
-        margin: 0 0 1rem 0;
-        left: 0;
-        top: 0;
+        display: none !important;
     }
     .content{
-        margin-left: 0;
+        margin-left: 0 !important;
         padding-left: 15px;
         padding-right: 15px;
     }
     .navbar-title{
-        margin-left: 0;
+        margin-left: 0 !important;
+    }
+    .mobile-toggle-btn{
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background: transparent;
+        color: var(--white-color);
+        font-size: 1.5rem;
+        padding: 0.5rem;
+        
+        &:hover, &:focus{
+            color: var(--white-color);
+            opacity: 0.8;
+        }
+    }
+}
+
+/* Styles pour l'offcanvas */
+.offcanvas{
+    .sidebar-item{
+        border-radius: 8px;
+        margin-bottom: 0.25rem;
     }
 }
 
@@ -149,6 +177,11 @@
         /* largeur de la sidebar réduite (80px) + margin-left (15px) + padding (5px) ≈ 100px */
         margin-left: 100px;
     }
+    
+    @media (max-width: 991.98px) {
+        margin-left: 0 !important;
+        padding-top: 15px;
+    }
 }
 .navbar .container{
     display: flex;
@@ -166,6 +199,31 @@
     margin: 0;
     margin-left: 295px;
     transition: margin-left 0.3s ease;
+    font-size: 1.25rem;
+    
+    /* Desktop large */
+    @media (min-width: 1200px) {
+        font-size: 1.25rem;
+    }
+    
+    /* Desktop */
+    @media (min-width: 992px) and (max-width: 1199.98px) {
+        font-size: 1.1rem;
+    }
+    
+    /* Tablette */
+    @media (min-width: 768px) and (max-width: 991.98px) {
+        font-size: 0.95rem;
+        padding: 0.5rem 0.75rem !important;
+        margin-left: 0 !important;
+    }
+    
+    /* Mobile */
+    @media (max-width: 767.98px) {
+        font-size: 0.85rem;
+        padding: 0.5rem !important;
+        margin-left: 0 !important;
+    }
 
     &.sidebar-collapsed{
         margin-left: 100px;

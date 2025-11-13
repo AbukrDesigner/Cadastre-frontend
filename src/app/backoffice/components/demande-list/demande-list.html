@@ -1,6 +1,6 @@
 <div class="container">
     <div class="p-2 bg-white">
-        <div class="d-flex flex-row align-items-center gap-2">
+        <div class="d-block d-md-flex flex-row align-items-center gap-2">
             <div class="p-2 onglet" role="button" tabindex="0"
                  (click)="setActive('encours')"
                  [class.active]="activeTab === 'encours'">
@@ -19,57 +19,68 @@
         </div>
     </div>
 
-    <div *ngIf="activeTab === 'encours'" class="table-responsive table-section bg-white p-3 rounded-2">
+    <div *ngIf="activeTab === 'encours'" class="table-section bg-white p-3 rounded-2">
         <h6 class="py-2 table-head">Listes des demandes</h6>
-        <div class="d-flex flex-row align-items-center gap-2">
-            <div class="input-group flex-nowrap mb-3">
+        <div class="d-flex flex-column flex-md-row align-items-stretch align-items-md-center gap-2 mb-3">
+            <div class="input-group flex-nowrap flex-grow-1">
                 <span class="input-group-text" id="addon-wrapping"><i class="bi bi-search"></i></span>
-                <input type="text" class="form-control" placeholder="Rechercher par numero" aria-label="Username" aria-describedby="addon-wrapping">
+                <input type="text" 
+                       class="form-control" 
+                       placeholder="Rechercher par numero" 
+                       aria-label="Rechercher" 
+                       aria-describedby="addon-wrapping"
+                       [(ngModel)]="searchTerm">
             </div> 
-            <div class="flex-nowrap mb-3">
-               <select name="option" id="option" class="form-select">
-                    <option value="option1" > Rechercher par type</option>
-                    <option value="option2">Option 2</option>
-                    <option value="option3">Option 3</option>
-                    <option value="autres">Autres</option>
+            <div class="flex-nowrap flex-grow-1 flex-md-grow-0">
+               <select name="option" 
+                       id="option" 
+                       class="form-select"
+                       [(ngModel)]="selectedType">
+                    <option value="" disabled selected>Sélectionner par type</option>
+                    <option value="Foncière">Foncière</option>
+                    <option value="Litiges">Litiges</option>
+                    <option value="Domaniale">Domaniale</option>
                </select>
             </div> 
-            <div class="mb-3 d-flex flex-row align-items-center justify-content-center border rounded-2 px-2 py-1">
-                <span><i class="bi bi-filter"></i></span>
-                <button class="btn cta filter">Filtrer</button>
-            </div>
+            <button class="btn cta filter border rounded-2 d-flex align-items-center  gap-1 flex-shrink-0" 
+                    type="button">
+                <i class="bi bi-filter"></i>
+                <span>Filtrer</span>
+            </button>
         </div>
         
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>N° DEMANDE</th>
-                    <th>DEMANDEUR</th>
-                    <th>TYPE DE RÉCLAMATION</th>
-                    <th>TYPE DE PROPRIÉTÉS</th>
-                    <th>STATUT</th>
-                    <th>ACTIONS</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let d of filteredDemandes">
-                    <td>{{ d.numero }}</td>
-                    <td>{{ d.demandeur }}</td>
-                    <td>{{ d.typeReclamation }}</td>
-                    <td>{{ d.typePropriete }}</td>
-                    <td>
-                        <span class="badge" [ngClass]="{
-                            'statut-encours': d.statut === 'En cours',
-                            'statut-acceptee': d.statut === 'Acceptée',
-                            'statut-rejetee': d.statut === 'Rejetée'
-                        }">{{ d.statut }}</span>
-                    </td>
-                    <td>
-                        <i class="bi bi-eye"></i>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>N° DEMANDE</th>
+                        <th>DEMANDEUR</th>
+                        <th>TYPE DE RÉCLAMATION</th>
+                        <th>TYPE DE PROPRIÉTÉS</th>
+                        <th>STATUT</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let d of filteredDemandes">
+                        <td>{{ d.numero }}</td>
+                        <td>{{ d.demandeur }}</td>
+                        <td>{{ d.typeReclamation }}</td>
+                        <td>{{ d.typePropriete }}</td>
+                        <td>
+                            <span class="badge" [ngClass]="{
+                                'statut-encours': d.statut === 'En cours',
+                                'statut-acceptee': d.statut === 'Acceptée',
+                                'statut-rejetee': d.statut === 'Rejetée'
+                            }">{{ d.statut }}</span>
+                        </td>
+                        <td>
+                            <i class="bi bi-eye"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         <mat-paginator [length]="100"
               [pageSize]="10"
               [pageSizeOptions]="[5, 10, 25, 100]"
@@ -78,57 +89,68 @@
 
     </div>
 
-    <div *ngIf="activeTab === 'acceptees'" class="table-responsive table-section bg-white p-3 rounded-2">
+    <div *ngIf="activeTab === 'acceptees'" class="table-section bg-white p-3 rounded-2">
         <h6 class="py-2 table-head">Listes des demandes</h6>
-        <div class="d-flex flex-row align-items-center gap-2">
-            <div class="input-group flex-nowrap mb-3">
+        <div class="d-flex flex-column flex-md-row align-items-stretch align-items-md-center gap-2 mb-3">
+            <div class="input-group flex-nowrap flex-grow-1">
                 <span class="input-group-text" id="addon-wrapping-acceptees"><i class="bi bi-search"></i></span>
-                <input type="text" class="form-control" placeholder="Rechercher par numero" aria-label="Username" aria-describedby="addon-wrapping-acceptees">
+                <input type="text" 
+                       class="form-control" 
+                       placeholder="Rechercher par numero" 
+                       aria-label="Rechercher" 
+                       aria-describedby="addon-wrapping-acceptees"
+                       [(ngModel)]="searchTerm">
             </div> 
-            <div class="flex-nowrap mb-3">
-               <select name="option" id="option-acceptees" class="form-select">
-                    <option value="option1" > Rechercher par type</option>
-                    <option value="option2">Option 2</option>
-                    <option value="option3">Option 3</option>
-                    <option value="autres">Autres</option>
+            <div class="flex-nowrap flex-grow-1 flex-md-grow-0">
+               <select name="option" 
+                       id="option-acceptees" 
+                       class="form-select"
+                       [(ngModel)]="selectedType">
+                    <option value="" disabled selected>Sélectionner par type</option>
+                    <option value="Foncière">Foncière</option>
+                    <option value="Litiges">Litiges</option>
+                    <option value="Domaniale">Domaniale</option>
                </select>
             </div> 
-            <div class="mb-3 d-flex flex-row align-items-center justify-content-center border rounded-2 px-2 py-1">
-                <span><i class="bi bi-filter"></i></span>
-                <button class="btn cta filter">Filtrer</button>
-            </div>
+            <button class="btn cta filter border rounded-2 d-flex align-items-center  gap-1 flex-shrink-0" 
+                    type="button">
+                <i class="bi bi-filter"></i>
+                <span>Filtrer</span>
+            </button>
         </div>
         
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>N° DEMANDE</th>
-                    <th>DEMANDEUR</th>
-                    <th>TYPE DE RÉCLAMATION</th>
-                    <th>TYPE DE PROPRIÉTÉS</th>
-                    <th>STATUT</th>
-                    <th>ACTIONS</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let d of filteredDemandes">
-                    <td>{{ d.numero }}</td>
-                    <td>{{ d.demandeur }}</td>
-                    <td>{{ d.typeReclamation }}</td>
-                    <td>{{ d.typePropriete }}</td>
-                    <td>
-                        <span class="badge" [ngClass]="{
-                            'statut-encours': d.statut === 'En cours',
-                            'statut-acceptee': d.statut === 'Acceptée',
-                            'statut-rejetee': d.statut === 'Rejetée'
-                        }">{{ d.statut }}</span>
-                    </td>
-                    <td>
-                        <i class="bi bi-eye"></i>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>N° DEMANDE</th>
+                        <th>DEMANDEUR</th>
+                        <th>TYPE DE RÉCLAMATION</th>
+                        <th>TYPE DE PROPRIÉTÉS</th>
+                        <th>STATUT</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let d of filteredDemandes">
+                        <td>{{ d.numero }}</td>
+                        <td>{{ d.demandeur }}</td>
+                        <td>{{ d.typeReclamation }}</td>
+                        <td>{{ d.typePropriete }}</td>
+                        <td>
+                            <span class="badge" [ngClass]="{
+                                'statut-encours': d.statut === 'En cours',
+                                'statut-acceptee': d.statut === 'Acceptée',
+                                'statut-rejetee': d.statut === 'Rejetée'
+                            }">{{ d.statut }}</span>
+                        </td>
+                        <td>
+                            <i class="bi bi-eye"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         <mat-paginator [length]="100"
               [pageSize]="10"
               [pageSizeOptions]="[5, 10, 25, 100]"
@@ -136,57 +158,68 @@
         </mat-paginator>
     </div>
 
-    <div *ngIf="activeTab === 'rejetees'" class="table-responsive table-section bg-white p-3 rounded-2">
+    <div *ngIf="activeTab === 'rejetees'" class="table-section bg-white p-3 rounded-2">
         <h6 class="py-2 table-head">Listes des demandes</h6>
-        <div class="d-flex flex-row align-items-center gap-2">
-            <div class="input-group flex-nowrap mb-3">
+        <div class="d-flex flex-column flex-md-row align-items-stretch align-items-md-center gap-2 mb-3">
+            <div class="input-group flex-nowrap flex-grow-1">
                 <span class="input-group-text" id="addon-wrapping-rejetees"><i class="bi bi-search"></i></span>
-                <input type="text" class="form-control" placeholder="Rechercher par numero" aria-label="Username" aria-describedby="addon-wrapping-rejetees">
+                <input type="text" 
+                       class="form-control" 
+                       placeholder="Rechercher par numero" 
+                       aria-label="Rechercher" 
+                       aria-describedby="addon-wrapping-rejetees"
+                       [(ngModel)]="searchTerm">
             </div> 
-            <div class="flex-nowrap mb-3">
-               <select name="option" id="option-rejetees" class="form-select">
-                    <option value="option1" > Rechercher par type</option>
-                    <option value="option2">Option 2</option>
-                    <option value="option3">Option 3</option>
-                    <option value="autres">Autres</option>
+            <div class="flex-nowrap flex-grow-1 flex-md-grow-0">
+               <select name="option" 
+                       id="option-rejetees" 
+                       class="form-select"
+                       [(ngModel)]="selectedType">
+                    <option value="" disabled selected>Sélectionner par type</option>
+                    <option value="Foncière">Foncière</option>
+                    <option value="Litiges">Litiges</option>
+                    <option value="Domaniale">Domaniale</option>
                </select>
             </div> 
-            <div class="mb-3 d-flex flex-row align-items-center justify-content-center border rounded-2 px-2 py-1">
-                <span><i class="bi bi-filter"></i></span>
-                <button class="btn cta filter">Filtrer</button>
-            </div>
+            <button class="btn cta filter border rounded-2 d-flex align-items-center  gap-1 flex-shrink-0" 
+                    type="button">
+                <i class="bi bi-filter"></i>
+                <span>Filtrer</span>
+            </button>
         </div>
         
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>N° DEMANDE</th>
-                    <th>DEMANDEUR</th>
-                    <th>TYPE DE RÉCLAMATION</th>
-                    <th>TYPE DE PROPRIÉTÉS</th>
-                    <th>STATUT</th>
-                    <th>ACTIONS</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let d of filteredDemandes">
-                    <td>{{ d.numero }}</td>
-                    <td>{{ d.demandeur }}</td>
-                    <td>{{ d.typeReclamation }}</td>
-                    <td>{{ d.typePropriete }}</td>
-                    <td>
-                        <span class="badge" [ngClass]="{
-                            'statut-encours': d.statut === 'En cours',
-                            'statut-acceptee': d.statut === 'Acceptée',
-                            'statut-rejetee': d.statut === 'Rejetée'
-                        }">{{ d.statut }}</span>
-                    </td>
-                    <td>
-                        <i class="bi bi-eye"></i>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>N° DEMANDE</th>
+                        <th>DEMANDEUR</th>
+                        <th>TYPE DE RÉCLAMATION</th>
+                        <th>TYPE DE PROPRIÉTÉS</th>
+                        <th>STATUT</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let d of filteredDemandes">
+                        <td>{{ d.numero }}</td>
+                        <td>{{ d.demandeur }}</td>
+                        <td>{{ d.typeReclamation }}</td>
+                        <td>{{ d.typePropriete }}</td>
+                        <td>
+                            <span class="badge" [ngClass]="{
+                                'statut-encours': d.statut === 'En cours',
+                                'statut-acceptee': d.statut === 'Acceptée',
+                                'statut-rejetee': d.statut === 'Rejetée'
+                            }">{{ d.statut }}</span>
+                        </td>
+                        <td>
+                            <i class="bi bi-eye"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         <mat-paginator [length]="100"
               [pageSize]="10"
               [pageSizeOptions]="[5, 10, 25, 100]"

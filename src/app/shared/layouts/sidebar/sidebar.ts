@@ -92,7 +92,7 @@ export class Sidebar implements OnInit, OnDestroy {
         } catch {}
 
         // Redirection vers la page de connexion
-        this.router.navigate(['/auth/login']);
+        this.router.navigate(['/auth/']);
       }
     });
   }

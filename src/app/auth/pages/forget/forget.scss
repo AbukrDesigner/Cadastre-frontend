@@ -1,8 +1,14 @@
 @use 'sass:color';
 
 .form-container{
-  width: 80vh;
+  width: 60vh !important;
   position: relative;
+  
+  // Mobile et tablette - même largeur que les autres pages
+  @media (max-width: 991.98px) {
+    width:100% !important;
+    max-width: 100% !important;
+  }
 }
 .republic{
   color: var(--text-color);

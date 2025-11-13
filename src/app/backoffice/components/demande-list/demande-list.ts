@@ -1,15 +1,19 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import {MatPaginatorModule} from '@angular/material/paginator';
+
 @Component({
   selector: 'app-demande-list',
   standalone: true,
-  imports: [CommonModule, MatPaginatorModule],
+  imports: [CommonModule, MatPaginatorModule, FormsModule],
   templateUrl: './demande-list.html',
   styleUrl: './demande-list.scss',
 })
 export class DemandeList {
 	activeTab: 'encours' | 'acceptees' | 'rejetees' = 'encours';
+	searchTerm: string = '';
+	selectedType: string = '';
 
 	demandes = [
 		{
@@ -71,17 +75,49 @@ export class DemandeList {
 	];
 
 	get filteredDemandes() {
+		let filtered = this.demandes;
+
+		// Filtrer par statut selon l'onglet actif
 		if (this.activeTab === 'encours') {
-			return this.demandes.filter(d => d.statut === 'En cours');
+			filtered = filtered.filter(d => d.statut === 'En cours');
+		} else if (this.activeTab === 'acceptees') {
+			filtered = filtered.filter(d => d.statut === 'Acceptée');
+		} else {
+			filtered = filtered.filter(d => d.statut === 'Rejetée');
 		}
-		if (this.activeTab === 'acceptees') {
-			return this.demandes.filter(d => d.statut === 'Acceptée');
+
+		// Filtrer par terme de recherche (numéro ou demandeur)
+		if (this.searchTerm) {
+			const search = this.searchTerm.toLowerCase();
+			filtered = filtered.filter(d => 
+				d.numero.toLowerCase().includes(search) || 
+				d.demandeur.toLowerCase().includes(search)
+			);
 		}
-		return this.demandes.filter(d => d.statut === 'Rejetée');
+
+		// Filtrer par type de réclamation
+		if (this.selectedType && this.selectedType !== '') {
+			filtered = filtered.filter(d => d.typeReclamation === this.selectedType);
+		}
+
+		return filtered;
 	}
 
 	setActive(tab: 'encours' | 'acceptees' | 'rejetees') {
 		this.activeTab = tab;
+		// Réinitialiser les filtres lors du changement d'onglet
+		this.searchTerm = '';
+		this.selectedType = '';
+		// Réinitialiser le select à la valeur placeholder
+		setTimeout(() => {
+			const selects = document.querySelectorAll('select[id^="option"]');
+			selects.forEach((select: any) => {
+				if (select) {
+					select.value = '';
+				}
+			});
+		}, 0);
 	}
+
 
 }

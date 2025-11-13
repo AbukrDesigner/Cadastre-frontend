@@ -24,6 +24,23 @@
     position: relative;
     top: -50px;
 }
+
+// Espace pour le footer fixe sur mobile et tablette
+@media (max-width: 991.98px) {
+    .container {
+        padding-bottom: 20px !important; // Espace pour éviter que le contenu passe sous le footer
+    }
+    .formulaire {
+        margin-bottom: 50px; // Espace supplémentaire
+    }
+}
+
+// Masquer les labels des steppers sur mobile uniquement
+@media (max-width: 767.98px) {
+    ::ng-deep .mat-step-header .mat-step-label {
+        display: none !important;
+    }
+}
 .form-select,.form-control{
     height: 50px;
 }
