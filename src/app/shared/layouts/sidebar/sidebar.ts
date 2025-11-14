@@ -15,12 +15,14 @@ export class Sidebar implements OnInit, OnDestroy {
   isDropdownOpen = false;
   isSidebarCollapsed = false;
   currentTitle = 'Tableau de bord';
+  isParametresMenuOpen = false;
   private destroy$ = new Subject<void>();
 
   constructor(public router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.updateTitle(this.route);
+    this.checkAndOpenMenu();
 
     this.router.events
       .pipe(
@@ -29,7 +31,15 @@ export class Sidebar implements OnInit, OnDestroy {
       )
       .subscribe(() => {
         this.updateTitle(this.route);
+        this.checkAndOpenMenu();
       });
+  }
+
+  private checkAndOpenMenu(): void {
+    // Ouvrir le menu Paramètres si on est sur une route enfant (comme /backoffice/users)
+    if (this.router.url.includes('/backoffice/users')) {
+      this.isParametresMenuOpen = true;
+    }
   }
 
   ngOnDestroy(): void {
@@ -54,6 +64,10 @@ export class Sidebar implements OnInit, OnDestroy {
 
   toggleSidebar() {
     this.isSidebarCollapsed = !this.isSidebarCollapsed;
+  }
+
+  toggleParametresMenu() {
+    this.isParametresMenuOpen = !this.isParametresMenuOpen;
   }
 
   @HostListener('document:click', ['$event'])

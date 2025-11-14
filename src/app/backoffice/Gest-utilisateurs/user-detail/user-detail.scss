@@ -1,0 +1,42 @@
+.cta{
+    padding: 10px 14px;
+    border-radius: 10px;
+}
+.cta.edituser{
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    font-size: 16px;
+    font-weight: 500;
+}
+.cta.lockuser{
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.cta.unlockuser{
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.table-head{
+	color: var(--text-color);
+	font-weight: 700;
+}
+
+.statut-acceptee{
+	background-color: rgba(10, 151, 72, 0.1); /* primary-color @ 10% */
+	color: var(--primary-color);
+	padding: 6px 10px;
+	border-radius: 10px;
+}
+
+.statut-rejetee{
+	background-color: rgba(246, 115, 102, 0.1); /* secondary-color @ 10% */
+	color: var(--secondary-color);
+	padding: 6px 10px;
+	border-radius: 10px;
+}

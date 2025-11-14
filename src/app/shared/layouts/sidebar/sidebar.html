@@ -85,9 +85,18 @@
                     <i class="bi bi-file-earmark-check-fill"></i>
                     <p class="sidebar-text">Vérifications</p>
                 </div>
-                <div class="sidebar-item" [routerLink]="'#'" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" data-bs-dismiss="offcanvas">
-                    <i class="bi bi-gear-fill"></i>
-                    <p class="sidebar-text">Paramètre</p>
+                <div class="sidebar-menu-group">
+                    <div class="sidebar-item" (click)="toggleParametresMenu()" data-bs-dismiss="offcanvas">
+                        <i class="bi bi-gear-fill"></i>
+                        <p class="sidebar-text">Paramètre</p>
+                        <i class="bi" [ngClass]="isParametresMenuOpen ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+                    </div>
+                    <div class="sidebar-submenu" [class.open]="isParametresMenuOpen">
+                        <div class="sidebar-item sidebar-subitem" [routerLink]="'/backoffice/users'" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" data-bs-dismiss="offcanvas">
+                            <i class="bi bi-person"></i>
+                            <p class="sidebar-text">Gestion Utilisateurs</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -106,20 +115,29 @@
         </div>
         <div class="d-flex flex-column gap-3">
             <div class="sidebar-item" [routerLink]="'/backoffice'" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                <i class="bi bi-grid"></i>
+                <i class="bi bi-grid px-1"></i>
                 <p class="sidebar-text fw-bold ">Tableau de bord</p>
             </div>
             <div class="sidebar-item" [routerLink]="'/backoffice/demandes'" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                <i class="bi bi-ui-checks"></i>
+                <i class="bi bi-ui-checks px-1"></i>
                 <p class="sidebar-text" >Gestion des réclamations</p>
             </div>
             <div class="sidebar-item" [routerLink]="'#'"  routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                <i class="bi bi-file-earmark-check-fill"></i>
+                <i class="bi bi-file-earmark-check-fill px-1"></i>
                 <p class="sidebar-text">Vérifications</p>
             </div>
-            <div class="sidebar-item" [routerLink]="'#'"  routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                <i class="bi bi-gear-fill"></i>
-                <p class="sidebar-text">Paramètre</p>
+            <div class="sidebar-menu-group">
+                <div class="sidebar-item" (click)="toggleParametresMenu()">
+                    <i class="bi bi-gear-fill px-1"></i>
+                    <p class="sidebar-text ">Paramètre</p>
+                    <i class="bi" [ngClass]="isParametresMenuOpen ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+                </div>
+                <div class="sidebar-submenu" [class.open]="isParametresMenuOpen">
+                    <div class="sidebar-item sidebar-subitem" [routerLink]="'/backoffice/users'" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                        <i class="bi bi-person px-1"></i>
+                        <p class="sidebar-text">Gestion Utilisateurs</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

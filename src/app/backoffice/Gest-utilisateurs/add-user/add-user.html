@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="px-3 py-2 bg-white">
+           <span class="fw-bolder"><i class="bi bi-person-fill fs-4 text-success"></i> Ajout d'un utilisateur</span>
+    </div>
+    <div class="p-3 rounded-2 bg-white mt-4">
+        <h5 class="py-2 table-head border-bottom">Infomations Générales</h5>
+        <div class="row g-3 align-items-start justify-content-center">
+            <div class="col-12 col-md-6">
+                <label for="prenom" class="form-label">Prénom</label>
+                <input type="text" class="form-control" placeholder="Saisir">
+            </div>
+            <div class="col-12 col-md-6">
+                <label for="nom" class="form-label">Nom</label>
+                <input type="text" class="form-control" placeholder="Saisir">
+            </div>
+            <div class="col-12 col-md-6">
+                <label for="nom" class="for-label">Email</label>
+                <input type="email" class="form-control" placeholder="Saisir">
+            </div>
+            <div class="col-12 col-md-6">
+                <label for="nom" class="for-label">Téléphone</label>
+                <input type="tel" class="form-control" placeholder="Saisir">
+            </div>
+        </div>
+        <div class="pt-4 d-block d-md-flex gap-2">
+            <button class="btn cta save" [routerLink]="'/backoffice/users'">Enregistrer</button>
+            <button class="btn cta cancel">Annuler</button>
+        </div>
+    </div>
+</div>

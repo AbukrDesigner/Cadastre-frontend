@@ -1,0 +1,107 @@
+<div class="container">
+    <div class="px-3 py-2 bg-white">
+        <div class="d-block d-md-flex flex-row align-items-center justify-content-between">
+           <span class="fw-bolder"><i class="bi bi-people-fill fs-4 text-success"></i> Gestion des utilisateurs</span>
+           <button class="btn cta adduser" [routerLink]="'/backoffice/add-user'"><i class="bi bi-plus fs-4 px-1"></i>Ajouter un utilisateur</button>
+        </div>
+    </div>
+
+    <div *ngIf="activeTab === 'encours'" class="table-section bg-white p-3 rounded-2">
+        <h6 class="py-2 table-head">Liste des utilisateurs</h6>
+        <div class="d-flex flex-column flex-md-row align-items-stretch align-items-md-center gap-2 mb-3">
+            <div class="input-group flex-nowrap flex-grow-1">
+                <span class="input-group-text" id="addon-wrapping"><i class="bi bi-search"></i></span>
+                <input type="text" 
+                       class="form-control" 
+                       placeholder="Rechercher par nom, email ou téléphone" 
+                       aria-label="Rechercher" 
+                       aria-describedby="addon-wrapping"
+                       [(ngModel)]="searchTerm"
+                       (ngModelChange)="onSearchChange()">
+            </div> 
+            <div class="flex-nowrap flex-grow-1 flex-md-grow-0">
+                <input type="text" 
+                    class="form-control"  
+                    placeholder="jj/mm/aaaa (ex: 15/01/2024)"
+                    aria-label="Date de création" 
+                    aria-describedby="addon-wrapping"
+                    [(ngModel)]="dateFilterDisplay"
+                    (ngModelChange)="onDateFilterChange($event)"
+                    pattern="\d{2}\/\d{2}\/\d{4}">
+            </div> 
+            <button class="btn cta filter border rounded-2 d-flex align-items-center gap-1 flex-shrink-0" 
+                    type="button"
+                    (click)="applyFilters()">
+                <i class="bi bi-filter"></i>
+                <span>Filtrer</span>
+            </button>
+            <button class="btn btn-outline-secondary border rounded-2 d-flex align-items-center gap-1 flex-shrink-0" 
+                    type="button"
+                    (click)="resetFilters()"
+                    *ngIf="searchTerm || dateFilterDisplay">
+                <i class="bi bi-x-circle"></i>
+                <span>Réinitialiser</span>
+            </button>
+        </div>
+        
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Prénom</th>
+                        <th>Nom</th>
+                        <th>Email</th>
+                        <th>Téléphone</th>
+                        <th>Date Création</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let utilisateur of paginatedUtilisateurs">
+                        <td>{{ utilisateur.Prenom }}</td>
+                        <td>{{ utilisateur.Nom }}</td>
+                        <td>{{ utilisateur.Email }}</td>
+                        <td>{{ utilisateur.Telephone }}</td>
+                        <td>{{ formatDate(utilisateur.Datecreation) }}</td>
+                        <td class="text-center">
+                            <div class="d-flex align-items-center justify-content-center gap-2">
+                                <button class="btn btn-sm btn-outline-primary" 
+                                        (click)="voirUtilisateur(utilisateur)"
+                                        title="Voir les détails">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-success" 
+                                        (click)="modifierUtilisateur(utilisateur)"
+                                        title="Modifier">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                                <button class="btn btn-sm bg-transparent btn-activate-disable" 
+                                        (click)="desactiverOuActiverUtilisateur(utilisateur)"
+                                        [title]="utilisateur.actif ? 'Désactiver' : 'Activer'">
+                                    <i class="bi" [ngClass]="utilisateur.actif ? 'bi-lock-fill' : 'bi-unlock-fill'"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr *ngIf="paginatedUtilisateurs.length === 0">
+                        <td colspan="6" class="text-center py-4">
+                            <i class="bi bi-inbox fs-1 text-muted d-block mb-2"></i>
+                            <span class="text-muted">Aucun utilisateur trouvé</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <mat-paginator [length]="totalItems"
+              [pageSize]="pageSize"
+              [pageIndex]="pageIndex"
+              [pageSizeOptions]="pageSizeOptions"
+              [showFirstLastButtons]="true"
+              (page)="onPageChange($event)"
+              aria-label="Sélectionner la page">
+        </mat-paginator>
+
+    </div>
+
+</div>
+

@@ -1,0 +1,56 @@
+<div class="container" *ngIf="utilisateur">
+    <div class="px-3 py-2 bg-white">
+           <span class="fw-bolder"><i class="bi bi-person-fill fs-4 text-success"></i> Modification de l'utilisateur {{ utilisateur.Prenom }}</span>
+    </div>
+    <div class="p-3 rounded-2 bg-white mt-4">
+        <h5 class="py-2 table-head border-bottom">Informations Générales</h5>
+        <div class="row g-3 align-items-start justify-content-center">
+            <div class="col-12 col-md-6">
+                <label for="prenom" class="form-label">Prénom</label>
+                <input type="text" 
+                       class="form-control" 
+                       id="prenom"
+                       placeholder="Saisir"
+                       [(ngModel)]="formData.Prenom">
+            </div>
+            <div class="col-12 col-md-6">
+                <label for="nom" class="form-label">Nom</label>
+                <input type="text" 
+                       class="form-control" 
+                       id="nom"
+                       placeholder="Saisir"
+                       [(ngModel)]="formData.Nom">
+            </div>
+            <div class="col-12 col-md-6">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" 
+                       class="form-control" 
+                       id="email"
+                       placeholder="Saisir"
+                       [(ngModel)]="formData.Email">
+            </div>
+            <div class="col-12 col-md-6">
+                <label for="telephone" class="form-label">Téléphone</label>
+                <input type="tel" 
+                       class="form-control" 
+                       id="telephone"
+                       placeholder="Saisir"
+                       [(ngModel)]="formData.Telephone">
+            </div>
+        </div>
+        <div class="pt-4 d-block d-md-flex gap-2">
+            <button class="btn cta save" (click)="enregistrer()">Enregistrer</button>
+            <button class="btn cta cancel" (click)="annuler()">Annuler</button>
+        </div>
+    </div>
+</div>
+
+<div class="container" *ngIf="!utilisateur">
+    <div class="p-5 text-center">
+        <i class="bi bi-exclamation-triangle fs-1 text-warning d-block mb-3"></i>
+        <h5>Utilisateur introuvable</h5>
+        <p class="text-muted">L'utilisateur demandé n'existe pas.</p>
+        <button class="btn cta save mt-3" (click)="annuler()">Retour à la liste</button>
+    </div>
+</div>
+

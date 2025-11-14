@@ -1,0 +1,23 @@
+input[type="email"], input[type="tel"], input[type="text"]{
+height: 50px;
+}
+.cta{
+    padding: 10px 14px;
+    border-radius: 10px;
+}
+//button enregistrer
+.cta.save{
+background-color: var(--primary-color);
+color: var(--white-color);
+font-size: 16px;
+font-weight: 500;
+}
+.cta.cancel{
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    font-size: 500;
+}
+.table-head{
+	color: var(--text-color);
+	font-weight: 700;
+}
