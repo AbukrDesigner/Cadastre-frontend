@@ -6,6 +6,7 @@ import { Depose } from "./components/depose/depose";
 import { title } from "process";
 import { Suivi } from "./components/suivi/suivi";
 import { Found } from "./components/found/found";
+import { Contact } from "./components/contact/contact";
 
 export const FRONTOFFICE_ROUTES:Routes =[
     {
@@ -47,6 +48,13 @@ export const FRONTOFFICE_ROUTES:Routes =[
                 component: Found,
                 data:{
                     title:'Demande trouvée'
+                }
+            },
+            {
+                path:'contact',
+                component: Contact,
+                data:{
+                    title:'Contact'
                 }
             }
         ]

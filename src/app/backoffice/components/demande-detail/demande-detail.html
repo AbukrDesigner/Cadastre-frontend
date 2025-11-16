@@ -1,0 +1,169 @@
+<div class="container">
+    <div class="p-2 bg-white">
+        <div class="d-block d-md-flex flex-row align-items-center gap-2">
+            <div class="p-2 onglet" role="button" tabindex="0"
+                 (click)="setActive('Details')"
+                 [class.active]="activeTab === 'Details'">
+                <span>Details</span>
+            </div>
+            <div class="p-2 onglet" role="button" tabindex="0"
+                 (click)="setActive('Avis technique')"
+                 [class.active]="activeTab === 'Avis technique'">
+                <span>Avis technique</span>
+            </div>
+            <div class="p-2 onglet" role="button" tabindex="0"
+                 (click)="setActive('Decision finale')"
+                 [class.active]="activeTab === 'Decision finale'">
+                <span>Decision finale</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <ng-container [ngSwitch]="activeTab">
+            <!-- Onglet Details : contenu actuel -->
+            <ng-container *ngSwitchCase="'Details'">
+                <div class="row g-3 align-items-start justify-content-center">
+                    <div class="col-lg-4 col-md-12">
+                        <div class="bg-white rounded-2 p-3">
+                            <div class="d-flex flex-column align-items-start">
+                                <span class="left-title">
+                                    <i class="bi bi-file-earmark-fill fs-4 px-1 text-success"></i>
+                                    Suivi du processus de traitement
+                                </span>
+                                <span class="small text-muted ps-3">Etape 3/4__centralisation des avis</span>
+                            </div>
+                            <mat-stepper orientation="vertical">
+                                <mat-step>
+                                    <ng-template matStepLabel>Etudes de recevabilité</ng-template>
+                                    <ng-template matStepContent>
+                                        <p class="text-success fs-6">Vérification de la conformité</p>
+                                    </ng-template>
+                                </mat-step>
+                                <mat-step>
+                                    <ng-template matStepLabel>Dossier validé</ng-template>
+                                    <ng-template matStepContent>
+                                        <p class="text-success fs-6">Envoi aux services techniques</p>
+                                    </ng-template>
+                                </mat-step>
+                                <mat-step>
+                                    <ng-template matStepLabel>Attente retour avis</ng-template>
+                                    <p class="text-success fs-6">Avis des services techniques</p>
+                                </mat-step>
+                                <mat-step>
+                                    <ng-template matStepLabel>Centralisation des avis</ng-template>
+                                    <p class="text-success fs-6">Consolidation et decision finale</p>
+                                </mat-step>
+                            </mat-stepper>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-8">
+                        <app-accordions></app-accordions>
+                    </div>
+                </div>
+            </ng-container>
+
+            <!-- Onglet Avis technique -->
+            <ng-container *ngSwitchCase="'Avis technique'">
+                <div class="row g-3 align-items-start ">
+                    <div class="col-12 col-lg-4">
+                        <div class="bg-white rounded-2 p-3">
+                            <span class="left-title"><i class="bi bi-envelope-fill fs-4 px-1 text-success"></i>Directive du SGG</span>
+                            <div class="d-flex flex-row align-items-center justify-content-between border-bottom pb-3">
+                              <span class="small text-muted">Imputée le </span>
+                              <span class="small text-muted">12/12/2025</span>
+                            </div>
+                            <div class="py-3 mt-4">
+                              <span class="fs-5 fw-bold text-muted">Instructions Officielles</span>
+                              <div class="bg-secondary-subtle p-3 rounded-2 border border-2">
+                                <p class="text-muted fs-6">
+                                  Veuillez étudier ce dossier avec la plus grande diligence et transmettre votre avis au plus tard le 15/12/2025.
+                                </p>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-8">
+                      <div class="bg-white rounded-2 p-3">
+                        <h5 class="mb-3 fw-bold right-title pb-3 border-bottom">Avis technique</h5>
+                        <div class="py-3">
+                          <label for="avis-technique" class="form-label">Avis & Observations</label>
+                          <textarea class="form-control" id="avis-technique" rows="3">Contenu de l'avis technique</textarea>
+                        </div>
+                        <div class="py-3">
+                          <label for="recommandation" class="form-label">Recommandation</label>
+                          <select class="form-select" id="recommandation">
+                            <option value="1">Recommandation 1</option>
+                            <option value="2">Recommandation 2</option>
+                            <option value="3">Recommandation 3</option>
+                          </select>
+                        </div>
+                        <div class="py-3">
+                          <label class="form-label">Complément d'informations</label>
+                          <input
+                            #fileInput
+                            type="file"
+                            multiple
+                            accept="application/pdf,image/*"
+                            class="d-none"
+                            (change)="onFilesSelected($event)">
+
+                          <div class="upload-area" (click)="fileInput.click()">
+                            <p class="mb-1 text-muted">
+                              Déposez vos documents ici ou cliquez pour parcourir vos fichiers.
+                            </p>
+                            <p class="small text-muted mb-0">
+                              Formats acceptés : PDF, images. Taille max par fichier selon vos règles internes.
+                            </p>
+                          </div>
+
+                          <ul class="list-unstyled mt-2" *ngIf="uploadedFiles.length > 0">
+                            <li *ngFor="let file of uploadedFiles" class="small text-muted">
+                              • {{ file.name }}
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      
+                    </div>
+                </div>
+            </ng-container>
+
+            <!-- Onglet Decision finale -->
+            <ng-container *ngSwitchCase="'Decision finale'">
+                <div class="row g-3 align-items-start justify-content-center">
+                    <div class="col-12">
+                        <div class="bg-white rounded-2 p-3">
+                          <div class="d-flex flex-row align-items-center pb-3 border-bottom justify-content-between">
+                            <h6 class="num-demande">DEM-2025-0001</h6>
+                            <span class="small text-muted">le 05/12/2025</span>
+                          </div>
+                          <div class="py-3">
+                            <div class="d-flex flex-row align-items-center justify-content-between">
+                              <span class="fw-bold text-muted">Statut de la décision </span>
+                              <span class="small  text-success px-3 py-2 rounded-2 bg-success-subtle">Acceptée</span>
+                            </div>
+                          </div>
+                          <div class="py-3">
+                            <span class="fs-5 fw-bold text-muted">Note de synthèse</span>
+                            <div class="p-3 bg-success-subtle rounded-end-2 border border-2 border-success border-start border-top-0 border-bottom-0 border-end-0 border-end-0">
+                              <p class="text-muted fs-6">
+                               Suit à l'étude méticuleuse faite sur ceux je déclare que le plaignant est dans sont droit le plus légitime et donc appelle à la retenue des accusés.
+                              </p>
+                            </div>
+                          </div>
+                          <div class="py-3">
+                            <button class="cta btn download-btn w-auto">
+                              <i class="bi bi-download fs-4 px-2"></i>
+                              <span>Télécharger la document officiel</span>
+                            </button>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </ng-container>
+    </div>
+</div>
+
+<!-- <app-accordions> -->

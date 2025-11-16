@@ -105,4 +105,11 @@ export class UserDetail implements OnInit, OnDestroy {
 		const annee = d.getFullYear();
 		return `${jour}/${mois}/${annee}`;
 	}
+
+	modifierUtilisateur() {
+		if (!this.utilisateur) return;
+		// Rediriger vers la page d'édition avec l'email de l'utilisateur
+		const emailEncoded = encodeURIComponent(this.utilisateur.Email);
+		this.router.navigate(['/backoffice/user-edit', emailEncoded]);
+	}
 }

@@ -2,20 +2,24 @@
     <div class="px-3 py-2 py-lg-3 bg-white">
         <div class="d-block d-md-flex flex-row align-items-center justify-content-between">
            <span class="fw-bolder"><i class="bi bi-person-fill fs-4 text-success"></i> Détail d'un utilisateur</span>
-            <div class="d-block d-md-flex align-items-start justify-content-center gap-2">
-                <button class="btn cta edituser">Modifier</button>
-                <button class="btn cta lockuser" 
+            <div class="d-block d-md-flex align-items-start justify-content-center gap-2 py-3 py-md-0">
+               <div>
+                <button class="btn w-100 w-md-auto cta edituser mb-2 mb-md-0" (click)="modifierUtilisateur()">Modifier</button>
+               </div>
+                <div>
+                    <button class="btn cta w-100 w-md-auto lockuser mb-2 mb-md-0" 
                         (click)="desactiverOuActiverUtilisateur()"
                         [class]="utilisateur.actif ? 'lockuser' : 'unlockuser'">
                     {{ utilisateur.actif ? 'Désactiver' : 'Activer' }}
                 </button>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="p-3 rounded-2 bg-white mt-4">
         <h5 class="py-2 table-head border-bottom">Informations Générales</h5>
-        <div class="row g-3 align-items-start justify-content-center">
+        <div class="row g-3 align-items-start justify-content-center py-2">
             <div class="col-12 col-md-4">
                 <div class="d-flex flex-column">
                     <span class="user-info fw-semibold text-muted">Prénom</span>
@@ -34,7 +38,7 @@
                     <span>{{ formatDate(utilisateur.Datecreation) }}</span>
                 </div>
             </div>
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-md-4 order-1 order-md-0">
                 <div class="d-flex flex-column">
                     <span class="user-info fw-semibold text-muted">Statut</span>
                     <span>

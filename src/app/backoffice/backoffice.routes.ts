@@ -9,6 +9,7 @@ import { GestUlisateurs } from "./Gest-utilisateurs/user-list/user-list";
 import { AddUser } from "./Gest-utilisateurs/add-user/add-user";
 import { UserDetail } from "./Gest-utilisateurs/user-detail/user-detail";
 import { EditUser } from "./Gest-utilisateurs/edit-user/edit-user";
+import { DemandeDetail } from "./components/demande-detail/demande-detail";
 
 export const BACKOFFICE_ROUTES: Routes =[
     {
@@ -24,6 +25,11 @@ export const BACKOFFICE_ROUTES: Routes =[
                 path: 'demandes',
                 component: DemandeList,
                 data:{title:'liste des demandes'}
+            },
+            {
+                path:'demande-detail/:id',
+                component: DemandeDetail,
+                data:{title:"Detail d'une demande"}
             },
            
             {

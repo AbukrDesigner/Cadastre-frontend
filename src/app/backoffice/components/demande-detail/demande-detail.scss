@@ -1,0 +1,82 @@
+.left-title{
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.onglet {
+    border-radius: 10px;
+    padding-inline: 1rem;
+    padding-block: 0.4rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    color: inherit;
+}
+
+.onglet:hover {
+    background-color: color-mix(in srgb, var(--primary-color) 8%, transparent);
+}
+
+.onglet span {
+    font-weight: 500;
+}
+
+.onglet.active {
+    /* fond basé sur la couleur primaire, mais très transparent */
+    background-color: color-mix(in srgb, var(--primary-color) 15%, transparent);
+    color: var(--primary-color);
+}
+
+.onglet.active span {
+    color: inherit;
+}
+//Avis technique
+.right-title{
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+.left-title{
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+.form-select{
+    height: 50px
+}
+
+.upload-area{
+    border-radius: 8px;
+    border: 1px dashed var(--primary-color);
+    padding: 0.75rem 1rem;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.25rem;
+    background-color: var(--bs-body-bg);
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.upload-area:hover{
+    background-color: color-mix(in srgb, var(--primary-color) 6%, transparent);
+    border-color: var(--primary-color);
+}
+.num-demande{
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+.download-btn{
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.download-btn:hover{
+    background-color: color-mix(in srgb, var(--primary-color) 90%, transparent);
+}

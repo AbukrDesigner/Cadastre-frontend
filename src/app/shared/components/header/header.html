@@ -46,16 +46,16 @@
                         <a [routerLink]="'/frontoffice/portail'" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a href="javascript:(0)" class="nav-link">Services</a>
+                        <a href="#services" class="nav-link">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a href="javascript:(0)" class="nav-link">Comment ça marche</a>
+                        <a href="#comment-ca-marche" class="nav-link">Comment ça marche</a>
                     </li>
                     <li class="nav-item">
                         <a href="javascript:(0)" class="nav-link">Contacts</a>
                     </li>
                     <li class="nav-item mt-3 mt-lg-0">
-                        <a href="javascript:(0)" class="btn btn-login w-100 w-lg-auto">Se connecter</a>
+                        <a href="javascript:(0)" class="btn btn-login w-100 w-lg-auto" [routerLink]="'/auth/'">Se connecter</a>
                     </li>
                 </ul>
             </div>
