@@ -10,6 +10,8 @@ import { AddUser } from "./Gest-utilisateurs/add-user/add-user";
 import { UserDetail } from "./Gest-utilisateurs/user-detail/user-detail";
 import { EditUser } from "./Gest-utilisateurs/edit-user/edit-user";
 import { DemandeDetail } from "./components/demande-detail/demande-detail";
+import { ImputationCreate } from "./imputations/components/imputation-create/imputation-create";
+import { ImputationDiffusion } from "./imputations/components/imputation-diffusion/imputation-diffusion";
 
 export const BACKOFFICE_ROUTES: Routes =[
     {
@@ -51,6 +53,18 @@ export const BACKOFFICE_ROUTES: Routes =[
                 path:'user-edit/:id',
                 component: EditUser,
                 data:{title:'Modifier un utilisateur'}
+            },
+            {
+                path:'imputation-create',
+                component: ImputationCreate,
+                data:{title:'Créer une imputation'},
+            },
+            {
+                path:'imputation-diffusion',
+                component: ImputationDiffusion,
+                data:{
+                    title:'Imputation'
+                }
             }
         ]
     }

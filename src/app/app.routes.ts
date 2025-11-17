@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { Portail } from './frontoffice/components/portail/portail';
 
 export const routes: Routes = [
     {
@@ -20,7 +19,7 @@ export const routes: Routes = [
         )
     },
     {
-        path:'backoffice',
+        path: 'backoffice',
         loadChildren: () => import('./backoffice/backoffice.routes').then(
             m => m.BACKOFFICE_ROUTES
         )

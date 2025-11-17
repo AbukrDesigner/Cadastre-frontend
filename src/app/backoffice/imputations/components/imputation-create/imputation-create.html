@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row align-items-start justify-content-start g-3">
+        <div class="col-12 col-lg-4">
+            <div class="bg-white rounded-2 p-3">
+                <div class="d-flex flex-column align-items-start">
+                    <span class="left-title">
+                        <i class="bi bi-file-earmark-fill fs-4 px-1 text-success"></i>
+                        Suivi du processus de traitement
+                    </span>
+                    <span class="small text-muted ps-3">Etape 1/4__Soumission</span>
+                </div>
+                <div class="py-3">
+                    <mat-stepper orientation="vertical">
+                        <mat-step>
+                                    <ng-template matStepLabel>Recevabilté de la demande(SGG)</ng-template>
+                                    <ng-template matStepContent>
+                                       <div class="row g-2">
+                                            <div class="col-12 col-md-4">
+                                                <button class="btn cta agree" (click)="Agree()">Accepter</button>
+                                            </div>
+                                            <div class="col-12 col-md-4">
+                                                <button class="btn cta update">Modifier</button>
+                                            </div>
+                                            <div class="col-12 col-md-4">
+                                                <button class="btn cta cancel">Cloturer</button>
+                                            </div>
+                                       </div>
+                                    </ng-template>
+                        </mat-step>
+                    </mat-stepper>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-8">
+            <app-accordions></app-accordions>
+        </div>
+    </div>
+</div>

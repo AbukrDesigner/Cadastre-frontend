@@ -30,7 +30,9 @@ Chart.register(
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })
-export class Dashboard implements AfterViewInit {
+export class Dashboard implements AfterViewInit{
+  // isSidebarCollapsed = false;
+  // currentTitle = 'Tableau de bord';
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngAfterViewInit() {

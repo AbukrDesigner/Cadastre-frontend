@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row align-items-start justify-content-start g-3">
+        <div class="col-12 col-lg-4">
+            <div class="bg-white rounded-2 p-3">
+                <div class="d-flex flex-column align-items-start">
+                    <span class="left-title">
+                        <i class="bi bi-file-earmark-fill fs-4 px-1 text-success"></i>
+                        Suivi du processus de traitement
+                    </span>
+                    <span class="small text-muted ps-3">Etape 2/4__Soumission</span>
+                </div>
+                <div class="py-3">
+                    <mat-stepper orientation="vertical">
+                        <mat-step>
+                            <ng-template matStepLabel>Recevabilté de la demande(SGG)</ng-template>
+                            <ng-template matStepContent>
+                                <div class="bg-success-subtle text-success mt-2 p-2 rounded-2"><i class="bi bi-check-circle-fill"></i> Accepté</div>
+                                </ng-template>
+                        </mat-step>
+                        <mat-step>
+                            <ng-template matStepLabel>Imputation pour avis</ng-template>
+                            <ng-template matStepContent>
+                                <div class="mt-2 d-block d-md-flex flex-row align-items-center justify-content-start gap-2">
+                                    <div class="mb-2 mb-md-0">
+                                        <button class="btn cta imputer w-100" (click)="openModal()">Imputer</button>
+                                    </div>
+                                    <div>
+                                        <button class="btn cta cancel w-100">Cloturer</button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <app-modals></app-modals>
+                                </div>
+                                <!-- <div class="row g-2 align-items-start mt-2">
+                                    <div class="col-12 col-lg-4">
+                                        <button class="btn cta imputer">Imputer</button>
+                                    </div>
+                                    <div class="col-12 col-lg-4">
+                                        <button class="btn cta cancel">Cloturer</button>
+                                    </div>
+                                </div> -->
+                                </ng-template>
+                        </mat-step>
+                    </mat-stepper>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-8">
+            <app-accordions></app-accordions>
+        </div>
+    </div>
+</div>
