@@ -2,9 +2,9 @@ import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatPaginatorModule, MatPaginator, PageEvent } from '@angular/material/paginator';
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router, RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, filter, takeUntil } from 'rxjs';
 import { UserService, Utilisateur } from '../services/user.service';
 
 @Component({
@@ -15,6 +15,7 @@ import { UserService, Utilisateur } from '../services/user.service';
   styleUrls: ['./user-list.scss'],
 })
 export class GestUlisateurs implements OnInit, OnDestroy {
+	currentTitle = 'gestion utilisateurs';
 	@ViewChild(MatPaginator) paginator!: MatPaginator;
 	activeTab: 'encours' | 'acceptees' | 'rejetees' = 'encours';
 	searchTerm: string = '';
@@ -27,7 +28,8 @@ export class GestUlisateurs implements OnInit, OnDestroy {
 
 	constructor(
 		private userService: UserService,
-		private router: Router
+		public router: Router,
+		private route: ActivatedRoute
 	) {}
 
 	// Utilisateurs filtrés
@@ -43,6 +45,16 @@ export class GestUlisateurs implements OnInit, OnDestroy {
 	totalItems = 0;
 
 	ngOnInit() {
+		this.updateTitle(this.route);
+		this.router.events
+			.pipe(
+				filter((e): e is NavigationEnd => e instanceof NavigationEnd),
+				takeUntil(this.destroy$)
+			)
+			.subscribe(() => {
+				this.updateTitle(this.route);
+			});
+
 		// S'abonner aux changements des utilisateurs
 		this.userService.utilisateurs$
 			.pipe(takeUntil(this.destroy$))
@@ -55,6 +67,15 @@ export class GestUlisateurs implements OnInit, OnDestroy {
 	ngOnDestroy() {
 		this.destroy$.next();
 		this.destroy$.complete();
+	}
+
+	private updateTitle(route: ActivatedRoute): void {
+		let currentRoute: ActivatedRoute | null = route;
+		while (currentRoute?.firstChild) {
+			currentRoute = currentRoute.firstChild;
+		}
+		const title = currentRoute?.snapshot.data?.['title'] as string | undefined;
+		this.currentTitle = title ?? 'gestion utilisateurs';
 	}
 
 	// Filtrage des utilisateurs

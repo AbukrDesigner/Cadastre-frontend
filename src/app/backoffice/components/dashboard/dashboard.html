@@ -1,15 +1,13 @@
 <div class="container">
-    <div class=" dashboard">
-        <!-- <h6 class="fw-bold fs-5 text-white navbar-title p-3 mb-0 d-flex align-items-center gap-2" [class.sidebar-collapsed]="isSidebarCollapsed">
-            <i class="bi bi-chevron-left navbar-back d-none d-md-inline"
-               (click)="router.navigate(['/backoffice'])"
-               [class.d-none]="router.url === '/backoffice'"
-               aria-label="Retour au tableau de bord"></i>
-            {{ currentTitle }}
-        </h6> -->
+    <div class="dashboard">
+        <div class="mb-3">
+            <h6 class="fw-bold fs-5">
+                {{ currentTitle }}
+            </h6>
+        </div>
         <div class="row g-3">
             <div class="col-12 col-md-6 col-lg-4">
-                <div class="bg-white p-3 rounded-2">
+                <div class="bg-white px-3 py-4 rounded-2">
                     <div class="d-flex align-items-start justify-content-between gap-5">
                          <div class="d-flex flex-column">
                              <h6 class="fs-4 fw-bold text-muted">05</h6>
@@ -23,7 +21,7 @@
             </div>
 
             <div class="col-12 col-md-6 col-lg-4">
-                <div class="bg-white p-3 rounded-2">
+                <div class="bg-white px-3 py-4 rounded-2">
                         <div class="d-flex align-items-start justify-content-between gap-5">
                              <div class="d-flex flex-column">
                                  <h6 class="fs-4 fw-bold text-muted">10</h6>
@@ -38,7 +36,7 @@
             </div>
            
             <div class="col-12 col-md-6 col-lg-4">
-                <div class="bg-white p-3 rounded-2">
+                <div class="bg-white px-3 py-4 rounded-2">
                         <div class="d-flex align-items-start justify-content-between gap-5">
                              <div class="d-flex flex-column">
                                  <h6 class="fs-4 fw-bold text-muted">02</h6>

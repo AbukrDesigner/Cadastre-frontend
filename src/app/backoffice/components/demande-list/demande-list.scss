@@ -103,3 +103,14 @@ select.form-select {
 	min-width: 120px;
 }
 
+.eye-action {
+	padding: 6px 8px;
+	border-radius: 6px;
+	transition: background-color 0.2s ease;
+	
+	&:hover {
+		background-color: rgba(10, 151, 72, 0.1); /* primary-color @ 10% */
+		color: var(--primary-color);
+	}
+}
+

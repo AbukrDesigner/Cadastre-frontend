@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, filter, takeUntil } from 'rxjs';
 import { UserService, Utilisateur } from '../services/user.service';
 
 @Component({
@@ -14,6 +14,7 @@ import { UserService, Utilisateur } from '../services/user.service';
   styleUrl: './edit-user.scss',
 })
 export class EditUser implements OnInit, OnDestroy {
+	currentTitle = 'Modifier un utilisateur';
 	utilisateur: Utilisateur | null = null;
 	private destroy$ = new Subject<void>();
 
@@ -27,11 +28,21 @@ export class EditUser implements OnInit, OnDestroy {
 
 	constructor(
 		private route: ActivatedRoute,
-		private router: Router,
+		public router: Router,
 		private userService: UserService
 	) {}
 
 	ngOnInit() {
+		this.updateTitle(this.route);
+		this.router.events
+			.pipe(
+				filter((e): e is NavigationEnd => e instanceof NavigationEnd),
+				takeUntil(this.destroy$)
+			)
+			.subscribe(() => {
+				this.updateTitle(this.route);
+			});
+
 		// Récupérer l'email depuis les paramètres de route
 		this.route.params
 			.pipe(takeUntil(this.destroy$))
@@ -44,6 +55,15 @@ export class EditUser implements OnInit, OnDestroy {
 	ngOnDestroy() {
 		this.destroy$.next();
 		this.destroy$.complete();
+	}
+
+	private updateTitle(route: ActivatedRoute): void {
+		let currentRoute: ActivatedRoute | null = route;
+		while (currentRoute?.firstChild) {
+			currentRoute = currentRoute.firstChild;
+		}
+		const title = currentRoute?.snapshot.data?.['title'] as string | undefined;
+		this.currentTitle = title ?? 'Modifier un utilisateur';
 	}
 
 	loadUtilisateur(email: string) {

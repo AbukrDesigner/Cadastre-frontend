@@ -1,7 +1,6 @@
 import { Routes } from "@angular/router";
 import { Portail } from "./components/portail/portail";
 import { MainPortail } from "../shared/layouts/main-portail/main-portail";
-import { MainGuest } from "../shared/layouts/main-guest/main-guest";
 import { Depose } from "./components/depose/depose";
 import { title } from "process";
 import { Suivi } from "./components/suivi/suivi";
@@ -22,13 +21,6 @@ export const FRONTOFFICE_ROUTES:Routes =[
                 path: 'portail',
                 component: Portail
             },
-           
-        ],
-    },
-    {
-        path:'',
-        component: MainGuest,
-        children:[  
             {
                 path:'depose',
                 component: Depose,
@@ -57,6 +49,6 @@ export const FRONTOFFICE_ROUTES:Routes =[
                     title:'Contact'
                 }
             }
-        ]
+        ],
     }
 ]

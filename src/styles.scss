@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+// Import des styles SweetAlert2
+@use 'sweetalert2/src/sweetalert2.scss';
 // Import des styles de base Material sans thème personnalisé
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
-// Import des styles SweetAlert2
-@import 'sweetalert2/src/sweetalert2.scss';
 
 @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&display=swap');
 

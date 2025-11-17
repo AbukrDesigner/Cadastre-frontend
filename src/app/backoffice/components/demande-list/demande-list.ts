@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { Subject, filter, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-demande-list',
@@ -10,10 +12,43 @@ import {MatPaginatorModule} from '@angular/material/paginator';
   templateUrl: './demande-list.html',
   styleUrl: './demande-list.scss',
 })
-export class DemandeList {
+export class DemandeList implements OnInit, OnDestroy {
+	currentTitle = 'liste des demandes';
+	private destroy$ = new Subject<void>();
 	activeTab: 'encours' | 'acceptees' | 'rejetees' = 'encours';
 	searchTerm: string = '';
 	selectedType: string = '';
+
+	constructor(
+		public router: Router,
+		private route: ActivatedRoute
+	) {}
+
+	ngOnInit(): void {
+		this.updateTitle(this.route);
+		this.router.events
+			.pipe(
+				filter((e): e is NavigationEnd => e instanceof NavigationEnd),
+				takeUntil(this.destroy$)
+			)
+			.subscribe(() => {
+				this.updateTitle(this.route);
+			});
+	}
+
+	ngOnDestroy(): void {
+		this.destroy$.next();
+		this.destroy$.complete();
+	}
+
+	private updateTitle(route: ActivatedRoute): void {
+		let currentRoute: ActivatedRoute | null = route;
+		while (currentRoute?.firstChild) {
+			currentRoute = currentRoute.firstChild;
+		}
+		const title = currentRoute?.snapshot.data?.['title'] as string | undefined;
+		this.currentTitle = title ?? 'liste des demandes';
+	}
 
 	demandes = [
 		{

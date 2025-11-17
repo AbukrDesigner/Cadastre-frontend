@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Accordions } from '../../../../shared/components/accordions/accordions';
 import { MatStepperModule } from '@angular/material/stepper';
-import { Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { Subject, filter, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-imputation-create',
@@ -11,8 +12,40 @@ import Swal from 'sweetalert2';
   templateUrl: './imputation-create.html',
   styleUrl: './imputation-create.scss',
 })
-export class ImputationCreate {
-  constructor(private route: Router){}
+export class ImputationCreate implements OnInit, OnDestroy {
+  currentTitle = 'Créer une imputation';
+  private destroy$ = new Subject<void>();
+
+  constructor(
+    public router: Router,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    this.updateTitle(this.route);
+    this.router.events
+      .pipe(
+        filter((e): e is NavigationEnd => e instanceof NavigationEnd),
+        takeUntil(this.destroy$)
+      )
+      .subscribe(() => {
+        this.updateTitle(this.route);
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  private updateTitle(route: ActivatedRoute): void {
+    let currentRoute: ActivatedRoute | null = route;
+    while (currentRoute?.firstChild) {
+      currentRoute = currentRoute.firstChild;
+    }
+    const title = currentRoute?.snapshot.data?.['title'] as string | undefined;
+    this.currentTitle = title ?? 'Créer une imputation';
+  }
 
   Agree() {
     Swal.fire({
@@ -39,7 +72,7 @@ export class ImputationCreate {
           timer:3000,
           showConfirmButton: false,
         })
-        this.route.navigate(['/backoffice/imputation-diffusion'])
+        this.router.navigate(['/backoffice/imputation-diffusion'])
       }
     });
   }

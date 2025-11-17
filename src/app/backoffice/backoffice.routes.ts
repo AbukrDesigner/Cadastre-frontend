@@ -20,6 +20,11 @@ export const BACKOFFICE_ROUTES: Routes =[
         children: [
             {
                 path:'',
+                redirectTo: 'dashboard',
+                pathMatch: 'full'
+            },
+            {
+                path:'dashboard',
                 component: Dashboard,
                 data:{title:'Tableau de bord'}
             },

@@ -1,4 +1,13 @@
 <div class="container" *ngIf="utilisateur">
+    <div class="mb-3">
+        <h6 class="fw-bold fs-5 d-flex align-items-center gap-2">
+            <i class="bi bi-chevron-left navbar-back d-none d-md-inline"
+               (click)="router.navigate(['/backoffice/dashboard'])"
+               style="cursor: pointer;"
+               aria-label="Retour au tableau de bord"></i>
+            {{ currentTitle }}
+        </h6>
+    </div>
     <div class="px-3 py-2 bg-white">
            <span class="fw-bolder"><i class="bi bi-person-fill fs-4 text-success"></i> Modification de l'utilisateur {{ utilisateur.Prenom }}</span>
     </div>
@@ -39,7 +48,7 @@
             </div>
         </div>
         <div class="pt-4 d-block d-md-flex gap-2">
-            <button class="btn cta save" (click)="enregistrer()">Enregistrer</button>
+            <button class="btn cta save me-2 me-md-0" (click)="enregistrer()">Enregistrer</button>
             <button class="btn cta cancel" (click)="annuler()">Annuler</button>
         </div>
     </div>
